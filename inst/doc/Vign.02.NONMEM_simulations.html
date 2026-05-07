@@ -1,0 +1,349 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.8.27">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+
+<title>Simulations using NONMEM</title>
+<style>
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+width: 0.8em;
+margin: 0 0.8em 0.2em -1em;  vertical-align: middle;
+}
+.display.math{display: block; text-align: center; margin: 0.5rem auto;}
+
+html { -webkit-text-size-adjust: 100%; }
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+{ counter-reset: source-line 0; }
+pre.numberSource code > span
+{ position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+{ content: counter(source-line);
+position: relative; left: -1em; text-align: right; vertical-align: baseline;
+border: none; display: inline-block;
+-webkit-touch-callout: none; -webkit-user-select: none;
+-khtml-user-select: none; -moz-user-select: none;
+-ms-user-select: none; user-select: none;
+padding: 0 4px; width: 4em;
+}
+pre.numberSource { margin-left: 3em; padding-left: 4px; }
+div.sourceCode
+{ }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+</style>
+
+
+
+
+<style type="text/css">body {
+background-color: #fff;
+margin: 1em auto;
+max-width: 700px;
+overflow: visible;
+padding-left: 2em;
+padding-right: 2em;
+font-family: "Open Sans", "Helvetica Neue", Helvetica, Arial, sans-serif;
+font-size: 14px;
+line-height: 1.35;
+}
+table {
+margin: 1em auto;
+border-width: 1px;
+border-color: #DDDDDD;
+border-style: outset;
+border-collapse: collapse;
+}
+table th {
+border-width: 2px;
+padding: 5px;
+border-style: inset;
+}
+table td {
+border-width: 1px;
+border-style: inset;
+line-height: 18px;
+padding: 5px 5px;
+}
+table, table th, table td {
+border-left-style: none;
+border-right-style: none;
+}
+table thead, table tr.even {
+background-color: #f7f7f7;
+}
+p {
+margin: 0.5em 0;
+}
+blockquote {
+background-color: #f6f6f6;
+padding: 0.25em 0.75em;
+}
+hr {
+border-style: solid;
+border: none;
+border-top: 1px solid #777;
+margin: 28px 0;
+}
+dl {
+margin-left: 0;
+}
+dl dd {
+margin-bottom: 13px;
+margin-left: 13px;
+}
+dl dt {
+font-weight: bold;
+}
+ul {
+margin-top: 0;
+}
+ul li {
+list-style: circle outside;
+}
+ul ul {
+margin-bottom: 0;
+}
+pre, code {
+background-color: #f7f7f7;
+border-radius: 3px;
+color: #333;
+white-space: pre-wrap; 
+}
+pre {
+border-radius: 3px;
+margin: 5px 0px 10px 0px;
+padding: 10px;
+}
+pre:not([class]) {
+background-color: #f7f7f7;
+}
+code {
+font-family: Consolas, Monaco, 'Courier New', monospace;
+font-size: 85%;
+}
+p > code, li > code {
+padding: 2px 0px;
+}
+div.figure {
+text-align: center;
+}
+img {
+background-color: #FFFFFF;
+padding: 2px;
+border: 1px solid #DDDDDD;
+border-radius: 3px;
+border: 1px solid #CCCCCC;
+margin: 0 5px;
+}
+h1 {
+margin-top: 0;
+font-size: 35px;
+line-height: 40px;
+}
+h2 {
+border-bottom: 4px solid #f7f7f7;
+padding-top: 10px;
+padding-bottom: 2px;
+font-size: 145%;
+}
+h3 {
+border-bottom: 2px solid #f7f7f7;
+padding-top: 10px;
+font-size: 120%;
+}
+h4 {
+border-bottom: 1px solid #f7f7f7;
+margin-left: 8px;
+font-size: 105%;
+}
+h5, h6 {
+border-bottom: 1px solid #ccc;
+font-size: 105%;
+}
+a {
+color: #0033dd;
+text-decoration: none;
+}
+a:hover {
+color: #6666ff; }
+a:visited {
+color: #800080; }
+a:visited:hover {
+color: #BB00BB; }
+a[href^="http:"] {
+text-decoration: underline; }
+a[href^="https:"] {
+text-decoration: underline; }
+</style>
+</head>
+
+<body>
+
+
+<header id="title-block-header">
+<h1 class="title">Simulations using NONMEM</h1>
+
+</header>
+
+<nav id="TOC" role="doc-toc">
+    <h2 id="toc-title">Table of contents</h2>
+   
+  <ul>
+  <li><a href="#introduction" id="toc-introduction">Introduction</a></li>
+  <li><a href="#simulation-dataset" id="toc-simulation-dataset">Simulation dataset</a>
+  <ul>
+  <li><a href="#the-basics" id="toc-the-basics">The basics</a></li>
+  <li><a href="#additional-variables" id="toc-additional-variables">Additional variables</a></li>
+  <li><a href="#inclusion-of-model-parameters" id="toc-inclusion-of-model-parameters">Inclusion of model parameters</a></li>
+  </ul></li>
+  <li><a href="#simulation-model" id="toc-simulation-model">Simulation model</a></li>
+  <li><a href="#split-simulations" id="toc-split-simulations">Split simulations</a></li>
+  <li><a href="#run-the-simulation" id="toc-run-the-simulation">Run the simulation</a></li>
+  <li><a href="#final-thoughts" id="toc-final-thoughts">Final thoughts</a></li>
+  </ul>
+</nav>
+<h2 id="introduction">Introduction</h2>
+<p>This vignette describes the steps to simulate a NONMEM model using the <code>amp.sim</code> package. Although the example is relatively simple, it should showcase the general principle that can be applied to any type of model. The <code>amp.sim</code> package include various functions that can be used to help in the otherwise manual tasks when simulating solely with NONMEM. The functions are set-up in way that all sampling is done within R, and that all model parameters are added to the input file. This method is chosen because the flexibility it provides to perform different kind of sampling methods (e.g. including uncertainty, variability or a combination). Once a standardized input data set is available, the creation of simulation model from any kind of NONMEM model can be automated fairly easy.</p>
+<h2 id="simulation-dataset">Simulation dataset</h2>
+<h3 id="the-basics">The basics</h3>
+<p>The basis of a NONMEM simulation is creating a valid dataset. Within NONMEM all information regarding dosing, output time-points, covariates and parameters can be added to a data set. The following chunk shows how the <code>simdata</code> function can be used to create a starting point for a simulation data set:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(amp.sim)</span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a>simd <span class="ot">&lt;-</span> <span class="fu">simdata</span>(<span class="at">time =</span> <span class="fu">seq</span>(<span class="dv">0</span>,<span class="dv">120</span>,<span class="dv">1</span>), <span class="at">dosetime =</span> <span class="dv">0</span>, <span class="at">doseheight =</span> <span class="dv">100</span>, </span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a>                <span class="at">addl =</span> <span class="dv">2</span>, <span class="at">ii =</span> <span class="dv">24</span>, <span class="at">numid =</span> <span class="dv">10</span>)</span></code></pre></div>
+</div>
+<p>This function will create by default a data set for one dose level (or compound, compartment, etc), if needed for multiple subjects. In case multiple dose levels, compartments, etc. are necessary there are different possibilities. The following example shows a couple of examples using some simple base R functions:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="co"># lapply can be used for multiple repetitions</span></span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a>simd <span class="ot">&lt;-</span> <span class="fu">lapply</span>(<span class="fu">seq</span>(<span class="dv">300</span>,<span class="dv">600</span>,<span class="dv">1200</span>),<span class="cf">function</span>(x) {</span>
+<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">simdata</span>(<span class="at">time =</span> <span class="fu">seq</span>(<span class="dv">0</span>,<span class="dv">120</span>,<span class="dv">1</span>), <span class="at">dosetime =</span> <span class="dv">0</span>, <span class="at">doseheight =</span> x,</span>
+<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a>          <span class="at">addl =</span> <span class="dv">2</span>, <span class="at">ii =</span> <span class="dv">24</span>, <span class="at">numid =</span> <span class="dv">10</span>)</span>
+<span id="cb2-5"><a href="#cb2-5" aria-hidden="true" tabindex="-1"></a>})</span>
+<span id="cb2-6"><a href="#cb2-6" aria-hidden="true" tabindex="-1"></a>simd <span class="ot">&lt;-</span> <span class="fu">do.call</span>(rbind,simd)</span>
+<span id="cb2-7"><a href="#cb2-7" aria-hidden="true" tabindex="-1"></a><span class="co"># .. or rbind to do a few repetitions </span></span>
+<span id="cb2-8"><a href="#cb2-8" aria-hidden="true" tabindex="-1"></a>simd <span class="ot">&lt;-</span> <span class="fu">rbind</span>(<span class="fu">cbind</span>(simd,<span class="at">CMT=</span><span class="dv">1</span>),<span class="fu">cbind</span>(simd,<span class="at">CMT=</span><span class="dv">2</span>),<span class="fu">cbind</span>(simd,<span class="at">CMT=</span><span class="dv">3</span>))</span></code></pre></div>
+</div>
+<h3 id="additional-variables">Additional variables</h3>
+<p>The example above creates a basic dataset with only the bare minimum for a simulation. In many cases additional variables need to be added. These variables can be covariates or just variables used within the control stream. There are many different ways that variables can be added to the data and depends on the type of simulation to perform. Some important considerations are:</p>
+<ol type="1">
+<li>Should all subjects receive the same value(s)?</li>
+<li>Should the same subjects be present in each strata/treatment/dose group/etc.?</li>
+<li>Are there correlations that should be taken into account?</li>
+<li>How should time-varying covariates be handled?</li>
+</ol>
+<p>This vignette will not go through all possibilities and leave it up to the reader to add variables based on the type of simulation. However, be aware to add all variables used in a control stream in this step to prevent NONMEM from crashing. Some simple examples are included here for the creation of additional variables:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a>simd<span class="sc">$</span>WEIGHT <span class="ot">&lt;-</span> <span class="dv">70</span></span>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a>simd<span class="sc">$</span>TRT    <span class="ot">&lt;-</span> <span class="fu">sample</span>(<span class="dv">1</span><span class="sc">:</span><span class="dv">3</span>,<span class="dv">10</span>,<span class="at">replace=</span><span class="cn">TRUE</span>)</span>
+<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a>simd<span class="sc">$</span>AGE    <span class="ot">&lt;-</span> <span class="fu">as.integer</span>(<span class="fu">rnorm</span>(<span class="dv">10</span>,<span class="dv">39</span>,<span class="dv">5</span>))</span></code></pre></div>
+</div>
+<h3 id="inclusion-of-model-parameters">Inclusion of model parameters</h3>
+<p>Within the last step the model parameters are added to the data set. To do so the <code>sample_par</code> function can be used. The function takes the NONMEM ext file, which include the final parameter estimates, as input. It is possible to sample from the covariance matrix to take into account parameter uncertainty. In this case the covariance matrix (NONMEM cov file) should also be provided to the function. The following chunk show some examples on how the function can be used:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Simple sampling for 10 subjects with the same THETAs but different ETAs</span></span>
+<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a>samp <span class="ot">&lt;-</span> <span class="fu">sample_par</span>(<span class="st">&quot;run1.ext&quot;</span>,<span class="at">inc_eta=</span><span class="cn">TRUE</span>,<span class="at">nrepl=</span><span class="dv">10</span>)</span>
+<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-4"><a href="#cb4-4" aria-hidden="true" tabindex="-1"></a><span class="co"># We could include sampling with uncertainty and omit ETA values</span></span>
+<span id="cb4-5"><a href="#cb4-5" aria-hidden="true" tabindex="-1"></a><span class="co"># samp &lt;- sample_par(&quot;run2.ext&quot;,&quot;run2.cov&quot;,inc_eta=FALSE,nrepl=10,uncert = TRUE)</span></span>
+<span id="cb4-6"><a href="#cb4-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-7"><a href="#cb4-7" aria-hidden="true" tabindex="-1"></a><span class="co"># Or have uncertainty and variability</span></span>
+<span id="cb4-8"><a href="#cb4-8" aria-hidden="true" tabindex="-1"></a><span class="co"># samp &lt;- sample_par(&quot;run2.ext&quot;,&quot;run2.cov&quot;,inc_eta=TRUE,nrepl=10,uncert = FALSE)</span></span>
+<span id="cb4-9"><a href="#cb4-9" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-10"><a href="#cb4-10" aria-hidden="true" tabindex="-1"></a><span class="co"># Or use the result from a bootstrap to sample uncertainty</span></span>
+<span id="cb4-11"><a href="#cb4-11" aria-hidden="true" tabindex="-1"></a><span class="co"># samp &lt;- sample_par(&quot;run2.ext&quot;,bootstrap=&quot;.&quot;, uncert = TRUE)</span></span>
+<span id="cb4-12"><a href="#cb4-12" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-13"><a href="#cb4-13" aria-hidden="true" tabindex="-1"></a><span class="co"># In case of clinical trial simulations where a combination of replicates and subjects</span></span>
+<span id="cb4-14"><a href="#cb4-14" aria-hidden="true" tabindex="-1"></a><span class="co"># should be used, the sample_sim function can be used </span></span>
+<span id="cb4-15"><a href="#cb4-15" aria-hidden="true" tabindex="-1"></a><span class="co"># samp &lt;- sample_sim(ext=&quot;run2.ext&quot;,cov=&quot;run2.cov&quot;, type=&quot;unc_sameIIV&quot;, nrepl=10, nsub=20)</span></span></code></pre></div>
+</div>
+<p>The resulting data frame will include <span class="math inline"><em>θ</em></span> and/or <span class="math inline"><em>η</em></span> values based on the settings. The naming will always be prepended with the letter ‘S’ (for simulated or sampled) which is important for subsequent steps.</p>
+<p>In case residual error should be included in the simulations it might be necessary to adapt the sampled dataset within this step. This is the case when residual error is coded as <span class="math inline"><em>θ</em></span> and uncertainty is included. In these cases the <span class="math inline"><em>θ</em></span> value should likely be set to a single value (population estimate). In case residual is coded as <span class="math inline"><em>σ</em></span> the simulation model might need adaptation but more on that later.</p>
+<p>At this point the simulation dataset can be combined with the parameter estimates to create a final dataset and export the result to a csv file:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a>inp    <span class="ot">&lt;-</span> <span class="fu">merge</span>(simd,samp)</span>
+<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a>inp    <span class="ot">&lt;-</span> inp[<span class="fu">order</span>(inp<span class="sc">$</span>ID,inp<span class="sc">$</span>TIME),]</span>
+<span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a><span class="fu">write.csv</span>(inp,<span class="at">csv=</span><span class="st">&quot;sim.input.csv&quot;</span>,<span class="at">row.names =</span> <span class="cn">FALSE</span>, <span class="at">na =</span> <span class="st">&quot;.&quot;</span>)</span></code></pre></div>
+</div>
+<p>The resulting dataset would look something like this:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(simd)</span></code></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>  ID DOSE TIME AMT ADDL II DV WEIGHT AGE STHETA1 STHETA2 STHETA3  SETA1  SETA2
+1  1  100    0 100    2 24 NA     70  38   0.234    1.25    30.1 -0.072  0.033
+2  1  100    0  NA   NA NA NA     70  42   0.234    1.25    30.1 -0.157 -0.150
+3  1  100    1  NA   NA NA NA     70  32   0.234    1.25    30.1 -0.222  0.027
+4  1  100    2  NA   NA NA NA     70  44   0.234    1.25    30.1  0.021  0.203
+5  1  100    3  NA   NA NA NA     70  51   0.234    1.25    30.1 -0.047 -0.095
+6  1  100    4  NA   NA NA NA     70  45   0.234    1.25    30.1  0.098  0.054</code></pre>
+</div>
+</div>
+<h2 id="simulation-model">Simulation model</h2>
+<p>In the previous step we saw that sampling of <span class="math inline"><em>θ</em></span> and <span class="math inline"><em>η</em></span> values was done in R and added to the dataset. This means that it is not necessary to do sample <span class="math inline"><em>θ</em></span> or <span class="math inline"><em>η</em></span> values in NONMEM. One important characteristic of this method is that we do not use certain dollar blocks. Furthermore, the original model needs to be rewritten so that the parameters are read from the dataset. These things are fairly easy to automate and for this reason the <code>make_nmsimmodel</code> function is available:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb8"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="fu">make_nmsimmodel</span>(<span class="st">&quot;run1.mod&quot;</span>, <span class="at">smod =</span> <span class="st">&quot;sim1.mod&quot;</span>, <span class="at">data =</span> <span class="st">&quot;sim.input.csv&quot;</span>)</span></code></pre></div>
+</div>
+<p>In the example above the original model is read-in (run1.mod), adapted within R and finally written under a different name as simulation model. This new model should be directly ready for simulation. The only exception might be handling of residual error:</p>
+<ol type="1">
+<li>In case residual error should be taken into account and is coded as <span class="math inline"><em>σ</em></span>; The true sigma value should be manually replaced in the simulation model</li>
+<li>In case residual error should be taken into account, and uncertainty simulation should be performed and is coded as <span class="math inline"><em>θ</em></span>; Within the <code>sample_par</code> function the “restheta” should be provided. In these cases the residual error is set to the population estimate to use one value for all subjects.</li>
+</ol>
+<h2 id="split-simulations">Split simulations</h2>
+<p>The main idea behind setting up the simulation using this package is that there is one dataset and one simulation model. However in many cases the output of the simulations can be quite big, especially when uncertainty is taken into account or in case of a full clinical trial simulation (CTS). To overcome size problems or very long runtimes, it is possible to split the simulation in multiple chunks using the <code>split_sim</code> function:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb9"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="fu">split_sim</span>(<span class="at">data    =</span> <span class="st">&quot;sim.input.csv&quot;</span>,</span>
+<span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a>          <span class="at">model   =</span> <span class="st">&quot;run2sim_final.mod&quot;</span>,</span>
+<span id="cb9-3"><a href="#cb9-3" aria-hidden="true" tabindex="-1"></a>          <span class="at">locout  =</span> <span class="st">&quot;simulation&quot;</span>,</span>
+<span id="cb9-4"><a href="#cb9-4" aria-hidden="true" tabindex="-1"></a>          <span class="at">splitby =</span> <span class="st">&quot;DOSE&quot;</span>,</span>
+<span id="cb9-5"><a href="#cb9-5" aria-hidden="true" tabindex="-1"></a>          <span class="at">numout  =</span> <span class="dv">3</span>)</span></code></pre></div>
+</div>
+<p>Within this function, the dataset and model should be provided so that multiple copies can be made for both. Also, a variable to split on should be given and the number of outputs/models. The function will then try, as good as possible, to create equally sized chunks. An important note here, is that you can use a data frame for <code>data</code> instead of a csv file. This is convenient because in that case you do not need to use a huge csv file that should be split. Although, You do need a csv file in order to make the initial simulation model (e.g. ‘run2sim_final.mod’ above). It is suggested to do this with only the head of the simulation input and then do the splitting, for example:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb10"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="fu">write.csv</span>(<span class="fu">head</span>(inp),<span class="at">csv=</span><span class="st">&quot;sim.input.csv&quot;</span>,<span class="at">row.names =</span> <span class="cn">FALSE</span>, <span class="at">na =</span> <span class="st">&quot;.&quot;</span>)</span>
+<span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a><span class="fu">make_nmsimmodel</span>(<span class="st">&quot;run1.mod&quot;</span>, <span class="at">smod =</span> <span class="st">&quot;sim1.mod&quot;</span>, <span class="at">data =</span> <span class="st">&quot;sim.input.csv&quot;</span>)</span>
+<span id="cb10-3"><a href="#cb10-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb10-4"><a href="#cb10-4" aria-hidden="true" tabindex="-1"></a><span class="fu">split_sim</span>(<span class="at">data    =</span> inp,</span>
+<span id="cb10-5"><a href="#cb10-5" aria-hidden="true" tabindex="-1"></a>          <span class="at">model   =</span> <span class="st">&quot;sim1.mod&quot;</span>,</span>
+<span id="cb10-6"><a href="#cb10-6" aria-hidden="true" tabindex="-1"></a>          <span class="at">locout  =</span> <span class="st">&quot;simulation&quot;</span>,</span>
+<span id="cb10-7"><a href="#cb10-7" aria-hidden="true" tabindex="-1"></a>          <span class="at">splitby =</span> <span class="st">&quot;DOSE&quot;</span>,</span>
+<span id="cb10-8"><a href="#cb10-8" aria-hidden="true" tabindex="-1"></a>          <span class="at">numout  =</span> <span class="dv">3</span>)</span></code></pre></div>
+</div>
+<h2 id="run-the-simulation">Run the simulation</h2>
+<p>At this point, everything should be in place to perform the simulation. The only thing left to do is to run the model(s) in NONMEM. Obviously there are many different ways to do this, and based on the infrastructure in your organization. Therefore, the <code>amp.sim</code> package does not have any functionality for this. <strong>Below pseudo code for a general R function to run all models within a certain folder is shown</strong>:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb11"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="co"># </span><span class="al">NOTE</span><span class="co">: THIS IS EXAMPLE CODE; run_models IS NOT A FUNCTION AVAILABLE IN THE PACKAGE</span></span>
+<span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a>mods <span class="ot">&lt;-</span> <span class="fu">list.files</span>(<span class="st">&quot;simulation&quot;</span>,<span class="at">pattern=</span><span class="st">&quot;</span><span class="sc">\\</span><span class="st">.mod$&quot;</span>,<span class="at">full.names =</span> <span class="cn">TRUE</span>)</span>
+<span id="cb11-3"><a href="#cb11-3" aria-hidden="true" tabindex="-1"></a><span class="fu">run_models</span>(mods)</span></code></pre></div>
+</div>
+<h2 id="final-thoughts">Final thoughts</h2>
+<p>When simulating in NONMEM a large portion of the work is creating a dataset and rewrite a model to a simulation model. This package helps in both tasks. The sampling of parameters is done entirely within R. This makes it easy to control the kind of sampling that is necessary. Also, using this method it is easier to automate the creation of a simulation model. Overall the package reduces the number of manual tasks that are necessary making it less error prone. Finally, the package provides functions to set-up and perform the simulations. For post-processing of the results like calculations and plotting no functionality is present. This is mainly because it is too dependent on the type of project, also there are many other R packages available to perform these tasks.</p>
+
+
+
+
+
+</body></html>
