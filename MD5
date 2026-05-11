@@ -1,6 +1,6 @@
-41efc9e0e820f8b82cc4cf37da8d3e7a *DESCRIPTION
+1606dfbbfb2cc2fba89f927cb3bcfab1 *DESCRIPTION
 db1746de63cdb376bfcba5e9a7c4dd29 *NAMESPACE
-85b4dbed4d9c0fbc07336bbb8f07454e *NEWS.md
+1095771bb488e3340a1330dfff55b04f *NEWS.md
 4180038e5f31371af36fe0fd82fabace *R/amp.sim-package.R
 78f88e5a45ae6fbdc9356c8468eb81fd *R/conv_pow.r
 10f2c311911495c3bafe0c547ab4a1c4 *R/convert_nmsyntax.r
@@ -59,10 +59,10 @@ b0016858c702f338e82f3008438cd4d1 *inst/des2CMTbolusC.tmp
 8aed34bc61c89e100ed58394163c28c4 *inst/des2CMToralK.tmp
 a9835b5a33d006898e5ed752cee0be45 *inst/desolve.tmpl
 1cf4e7d5823db0c285224f7e0f0f511f *inst/doc/Vign.01.R_simulations.R
-5901a9afc12e197340e0cdc6e6f20e4d *inst/doc/Vign.01.R_simulations.html
+55a9b33ce8e97b8a9c0b71078343583f *inst/doc/Vign.01.R_simulations.html
 15633e9971e8ef494069daa6f672c411 *inst/doc/Vign.01.R_simulations.qmd
 3db2fb834cdfe15e19f223d4840297ef *inst/doc/Vign.02.NONMEM_simulations.R
-7ad9bad5addc1a6f2a445ac50d2a22d2 *inst/doc/Vign.02.NONMEM_simulations.html
+d5db9bf065c4876bc199ee61595a9c49 *inst/doc/Vign.02.NONMEM_simulations.html
 bc1d1aa95e6486a50b329d6d6d7af544 *inst/doc/Vign.02.NONMEM_simulations.qmd
 22997c6e94866135fef30076d03a886e *inst/doc/Vign.03.Shiny_apps.R
 6beeeaaa18618463422812d5d4b18f45 *inst/doc/Vign.03.Shiny_apps.html
@@ -131,7 +131,7 @@ ae5e27d34e5cbd366f4d1b578a11f58f *man/sample_par.Rd
 32fbf54a4f0d78ae9ce1dbf6dfb083b1 *man/split_sim.Rd
 e611fa42c0695f1ace80b5b6ac8c57cc *man/tmpl_model.Rd
 3e4a9ea6cdbccbe9ef295d85421dab61 *tests/testthat.R
-15e1e8392c6861e92712cfbd3799a46f *tests/testthat/test_misc.R
+182242959776cdefad6026a4fdfd7e93 *tests/testthat/test_misc.R
 3734a3c21dce5142463cbc1487afc0eb *tests/testthat/test_nonmemsim.R
 714bec8c886f5aa5a523fe33c7f58413 *tests/testthat/test_readconvert.R
 29d312aaa1631f58b0224e4a1bd724a5 *tests/testthat/test_shinypart.R
